@@ -29,9 +29,9 @@ namespace ET.Server
                 World.Instance.AddSingleton<CodeTypes, Assembly[]>(new[] { typeof (Init).Assembly });
                 World.Instance.AddSingleton<EventSystem>();
 
-                Console.WriteLine($"register new serializer");
-                var objectSerializer = new ObjectSerializer(type => ObjectSerializer.DefaultAllowedTypes(type) || type.FullName.StartsWith("ET"));
-                BsonSerializer.RegisterSerializer(objectSerializer);
+                // Console.WriteLine($"register new serializer");
+                // var objectSerializer = new ObjectSerializer(type => ObjectSerializer.DefaultAllowedTypes(type) || type.FullName.StartsWith("ET"));
+                // BsonSerializer.RegisterSerializer(objectSerializer);
                 // 强制调用一下mongo，避免mongo库被裁剪
                 MongoHelper.ToJson(1);
                 

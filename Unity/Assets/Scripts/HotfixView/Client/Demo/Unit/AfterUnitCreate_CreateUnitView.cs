@@ -9,10 +9,11 @@ namespace ET.Client
         {
             Unit unit = args.Unit;
             // Unit View层
-            string assetsName = $"Assets/Bundles/Unit/Unit.prefab";
-            GameObject bundleGameObject = await scene.GetComponent<ResourcesLoaderComponent>().LoadAssetAsync<GameObject>(assetsName);
-            GameObject prefab = bundleGameObject.Get<GameObject>("Skeleton");
+            // string assetsName = $"Unit.prefab";
+            // GameObject bundleGameObject = await scene.GetComponent<ResourcesLoaderComponent>().LoadAssetAsync<GameObject>(assetsName);
+            // GameObject prefab = bundleGameObject.Get<GameObject>("Skeleton");
 
+            GameObject prefab = await scene.GetComponent<ResourcesLoaderComponent>().LoadAssetAsync<GameObject>("Skeleton");
             GlobalComponent globalComponent = scene.Root().GetComponent<GlobalComponent>();
             GameObject go = UnityEngine.Object.Instantiate(prefab, globalComponent.Unit, true);
             go.transform.position = unit.Position;
