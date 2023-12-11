@@ -1,3 +1,10 @@
+# ETPlus, 基于ET8拓展，主要由以下变化：
+1. 基于UGUI适配ET的UI框架--EUI集成
+2. YooAsset改动：可寻址加载，添加资源加密，丰富加载接口，版本升级到1.5.6
+3. 基础版本的多语言支持
+4. 表格添加多key支持（自动生成），暂不打算接入Luban
+5. 添加前后端的固定间隔时间更新FixedUpdate
+
 # English: please use your browser to translate to english
 
 # __讨论QQ群 : 474643097__  
