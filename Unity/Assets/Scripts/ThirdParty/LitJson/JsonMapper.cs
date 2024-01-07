@@ -1050,7 +1050,7 @@ namespace LitJson
             }
             catch (Exception e)
             {
-                
+                Console.WriteLine($"{e}");
                 // Log.Error($"解析json异常，json：{json} \n{e}");
             }
 
