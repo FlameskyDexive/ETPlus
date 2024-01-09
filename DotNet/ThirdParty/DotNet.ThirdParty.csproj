@@ -32,6 +32,10 @@
 
     <ItemGroup>
 
+        <Compile Include="..\..\Unity\Assets\Scripts\ThirdParty\LitJson\**\*.cs">
+            <Link>LitJson/%(RecursiveDir)%(FileName)%(Extension)</Link>
+        </Compile>
+
         <Compile Include="..\..\Unity\Assets\Scripts\ThirdParty\LubanLib\**\*.cs">
             <Link>LubanLib/%(RecursiveDir)%(FileName)%(Extension)</Link>
         </Compile>
