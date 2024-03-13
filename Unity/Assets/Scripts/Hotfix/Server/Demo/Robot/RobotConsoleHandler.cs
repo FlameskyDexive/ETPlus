@@ -9,7 +9,6 @@ namespace ET.Server
         public async ETTask Run(Fiber fiber, ModeContex contex, string content)
         {
             string[] ss = content.Split(" ");
-            Log.Console($"robot handler:{content}, {ss[0]}");
             switch (ss[0])
             {
                 case ConsoleMode.Robot:
@@ -21,13 +20,13 @@ namespace ET.Server
 
                     try
                     {
-                        Log.Console($"run case start: {caseType}");
+                        Log.Debug($"run case start: {caseType}");
                         await EventSystem.Instance.Invoke<RobotInvokeArgs, ETTask>(caseType, new RobotInvokeArgs() { Fiber = fiber, Content = content });
-                        Log.Console($"run case finish: {caseType}");
+                        Log.Debug($"run case finish: {caseType}");
                     }
                     catch (Exception e)
                     {
-                        Log.Console($"run case error: {caseType}\n{e}");
+                        Log.Debug($"run case error: {caseType}\n{e}");
                     }
                     break;
                 }
@@ -39,18 +38,18 @@ namespace ET.Server
                         int caseType = (int)fieldInfo.GetValue(null);
                         if (caseType > RobotCaseType.MaxCaseType)
                         {
-                            Log.Console($"case > {RobotCaseType.MaxCaseType}: {caseType}");
+                            Log.Debug($"case > {RobotCaseType.MaxCaseType}: {caseType}");
                             break;
                         }
                         try
                         {
-                            Log.Console($"run case start: {caseType}");
+                            Log.Debug($"run case start: {caseType}");
                             await EventSystem.Instance.Invoke<RobotInvokeArgs, ETTask>(caseType, new RobotInvokeArgs() { Fiber = fiber, Content = content});
-                            Log.Console($"---------run case finish: {caseType}");
+                            Log.Debug($"---------run case finish: {caseType}");
                         }
                         catch (Exception e)
                         {
-                            Log.Console($"run case error: {caseType}\n{e}");
+                            Log.Debug($"run case error: {caseType}\n{e}");
                             break;
                         }
                     }

@@ -5,7 +5,8 @@ using MongoDB.Bson.Serialization.Attributes;
 
 namespace ET
 {
-	public partial class AIConfigCategory
+    [EnableClass]
+    public partial class AIConfigCategory
 	{
 		[BsonIgnore]
 		public Dictionary<int, SortedDictionary<int, AIConfig>> AIConfigs = new Dictionary<int, SortedDictionary<int, AIConfig>>();
@@ -15,7 +16,7 @@ namespace ET
 			return this.AIConfigs[aiConfigId];
 		}
 
-		/*public override void EndInit()
+		partial void PostResolve()
 		{
 			foreach (var kv in this.GetAll())
 			{
@@ -28,6 +29,6 @@ namespace ET
 				
 				aiNodeConfig.Add(kv.Key, kv.Value);
 			}
-		}*/
+		}
 	}
 }

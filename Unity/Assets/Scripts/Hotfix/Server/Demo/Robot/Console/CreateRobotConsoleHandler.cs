@@ -9,7 +9,6 @@ namespace ET.Server
     {
         public async ETTask Run(Fiber fiber, ModeContex contex, string content)
         {
-            Log.Console($"Create robot content:{content}");
             switch (content)
             {
                 case ConsoleMode.CreateRobot:
@@ -27,14 +26,13 @@ namespace ET.Server
                     RobotManagerComponent robotManagerComponent =
                             fiber.Root.GetComponent<RobotManagerComponent>() ?? fiber.Root.AddComponent<RobotManagerComponent>();
 
-                    Log.Console($"create robot Total:{options.Num}");
-                        // 创建机器人
-                        TimerComponent timerComponent = fiber.Root.GetComponent<TimerComponent>();
+                    // 创建机器人
+                    TimerComponent timerComponent = fiber.Root.GetComponent<TimerComponent>();
                     for (int i = 0; i < options.Num; ++i)
                     {
                         await robotManagerComponent.NewRobot($"Robot_{i}");
                         Log.Console($"create robot {i}");
-                        await timerComponent.WaitAsync(1000);
+                        await timerComponent.WaitAsync(2000);
                     }
                     break;
                 }
